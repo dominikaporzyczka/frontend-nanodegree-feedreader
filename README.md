@@ -1,7 +1,10 @@
 # Feed reader
 
-## To run the application visit this link:
-https://dominikaporzyczka.github.io/frontend-nanodegree-feedreader/
+## To run the application:
+
+1) Clone repository
+2) Open folder
+3) Run index.html file in your browser
 
 ## Project Overview
 

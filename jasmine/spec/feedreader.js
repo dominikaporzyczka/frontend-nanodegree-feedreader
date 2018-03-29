@@ -94,7 +94,7 @@ $(function () {
         });
 
         it('completed its work', function (done) {
-            expect($('.feed').children().length > 0).toBe(true);
+            expect($('.feed .entry').length > 0).toBe(true);
             done();
         });
     });
@@ -105,24 +105,26 @@ $(function () {
          * by the loadFeed function that the content actually changes.
          * Remember, loadFeed() is asynchronous.
          */
-        let feed1, feed2;
+        let feed, newFeed;
 
         beforeEach(function (done) {
             try {
-                feed1 = $('.feed').html();
+                loadFeed(0, function () {
+                    feed = $('.feed').html();
 
-                loadFeed(1, function() {
-                    done();
+                    loadFeed(1, function () {
+                        newFeed = $('.feed').html();
+
+                        done();
+                    });
                 });
             } catch (e) {
                 done.fail(e);
             }
         });
 
-        it('changes the content', function(done) {
-            feed2 = $('.feed').html();
-
-            expect(feed1).not.toBe(feed2);
+        it('changes the content', function (done) {
+            expect(feed).not.toBe(newFeed);
             done();
         })
     });
